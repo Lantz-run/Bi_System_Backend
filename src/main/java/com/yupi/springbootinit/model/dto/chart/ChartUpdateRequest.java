@@ -1,19 +1,23 @@
-package com.yupi.springbootinit.model.entity;
+package com.yupi.springbootinit.model.dto.chart;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 /**
- * 图表信息表
- * @TableName chart
+ * 更新请求
+ *
+ * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
+ * @from <a href="https://yupi.icu">编程导航知识星球</a>
  */
-@TableName(value ="chart")
 @Data
-public class Chart {
+public class ChartUpdateRequest implements Serializable {
+
     /**
      * id
      */
@@ -24,7 +28,6 @@ public class Chart {
      * 名称
      */
     private String name;
-
 
     /**
      * 分析目标
@@ -42,11 +45,6 @@ public class Chart {
     private String chartType;
 
     /**
-     * 用户 id
-     */
-    private Long userId;
-
-    /**
      * 生成的图表数据
      */
     private String genChart;
@@ -57,20 +55,9 @@ public class Chart {
     private String genResult;
 
     /**
-     * 执行状态
-     */
-    private String status;
-
-    /**
-     * 执行信息
-     */
-    private String execMessage;
-
-
-    /**
      * 创建时间
      */
-     private Date createTime;
+    private Date createTime;
 
     /**
      * 更新时间
@@ -83,4 +70,5 @@ public class Chart {
     @TableLogic
     private Integer isDelete;
 
+    private static final long serialVersionUID = 1L;
 }

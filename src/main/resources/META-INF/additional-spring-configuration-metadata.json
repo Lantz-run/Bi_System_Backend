@@ -29,6 +29,18 @@
       "name": "wx.open.appSecret",
       "type": "java.lang.String",
       "description": "Description for wx.open.appSecret."
+    },
+    {
+      "name": "xun-fei.client.appId",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "xun-fei.client.apiSecret",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "xun-fei.client.apiKey",
+      "type": "java.lang.String"
     }
   ]
 }
