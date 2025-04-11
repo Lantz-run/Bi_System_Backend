@@ -4,6 +4,8 @@ import cn.hutool.core.io.FileUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yupi.springbootinit.annotation.AuthCheck;
+import com.yupi.springbootinit.bizmq.BiMessageConsumer;
+import com.yupi.springbootinit.bizmq.BiMessageProducer;
 import com.yupi.springbootinit.common.BaseResponse;
 import com.yupi.springbootinit.common.DeleteRequest;
 import com.yupi.springbootinit.common.ErrorCode;
@@ -61,6 +63,9 @@ public class ChartController {
 
     @Resource
     private ThreadPoolExecutor threadPoolExecutor;
+
+    @Resource
+    private BiMessageProducer biMessageProducer;
 
 
     // region 增删改查
@@ -392,6 +397,7 @@ public class ChartController {
         ThrowUtils.throwIf(!saveResult, ErrorCode.SYSTEM_ERROR, "图表保存失败");
 
         // todo 建议处理任务队列满了后，抛异常的情况
+        // 线程池
         CompletableFuture.runAsync(() -> {
             // 先修改图表任务状态为 “执行中”。等执行成功后，修改为 “已完成”、保存执行结果；执行失败后，状态修改为 “失败”，记录任务失败信息。
             Chart updateChart = new Chart();
@@ -427,6 +433,7 @@ public class ChartController {
         biResponse.setChartId(chart.getId());
         return ResultUtils.success(biResponse);
     }
+
 
     /**
      * 智能分析（异步消息队列）
@@ -470,7 +477,6 @@ public class ChartController {
 //                "{前端 Echarts V5 的 option 配置对象js代码，合理地将数据进行可视化，不要生成任何多余的内容，比如注释}\n" +
 //                "'【【【【'\n" +
 //                "{明确的数据分析结论、越详细越好，不要生成多余的注释}";
-        long biModelId = 1659171950288818178L;
         // 分析需求：
         // 分析网站用户的增长情况
         // 原始数据：
@@ -504,7 +510,11 @@ public class ChartController {
         chart.setUserId(loginUser.getId());
         boolean saveResult = chartService.save(chart);
         ThrowUtils.throwIf(!saveResult, ErrorCode.SYSTEM_ERROR, "图表保存失败");
+
+        // 在最终的返回结果前提加一个任务
+        // todo 建议处理任务队列满之后，抛异常的情况（因为提交任务报错了，前端会返回异常）
         long newChartId = chart.getId();
+        biMessageProducer.sendMessage(String.valueOf(newChartId));
         BiResponse biResponse = new BiResponse();
         biResponse.setChartId(newChartId);
         return ResultUtils.success(biResponse);
