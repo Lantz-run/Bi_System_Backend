@@ -108,6 +108,6 @@ knife4j:
 ## 讯飞 AI 配置
 xun-fei:
   client:
-    appId: 69045b57
-    apiSecret: OWFhMDI1MzVlM2MyOTU2M2MwZGU4OWI1
-    apiKey: 6168ad003dc5789b8ff6e83f8f0199da
+    appId: 
+    apiSecret: 
+    apiKey: 
