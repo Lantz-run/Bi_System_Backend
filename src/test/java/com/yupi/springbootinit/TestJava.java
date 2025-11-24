@@ -1,15 +1,5 @@
 package com.yupi.springbootinit;
 
-/**
- * <p>Project: yubi-backend
- * <p>Powered by Lantz On 2025/3/29
- *
- * @author Lantz
- * @version 1.0
- * @Description TestJava
- * @since 1.8
- */
-
 import com.yupi.springbootinit.manager.AiManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +16,7 @@ public class TestJava {
     @Resource
     private AiManager aiManager;
 
-
+    
     // import org.junit.jupiter.api.Test;
     @Test
     public void test() {
@@ -39,8 +29,9 @@ public class TestJava {
                 " 2号,20\n" +
                 " 3号,30";
         String s = aiManager.sendMsgToXingHuo(true, c);
+//        String s = aiManager.sendMsgToDeepSeek("ep-20250329105128-77tsn", c);
         System.out.println("s = " + s);
     }
-
+    
 }
 

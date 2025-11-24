@@ -2400,7 +2400,7 @@ public class BiMessageConsumer {
         updateChartResult.setId(chart.getId());
         updateChartResult.setGenChart(genChart);
         updateChartResult.setGenResult(genResult);
-        // todo 建议定义状态为枚举值
+        // 建议定义状态为枚举值
         updateChartResult.setStatus("succeed");
         boolean updateResult = chartService.updateById(updateChartResult);
         if (!updateResult) {

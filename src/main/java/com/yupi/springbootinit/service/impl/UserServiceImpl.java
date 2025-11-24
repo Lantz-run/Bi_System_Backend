@@ -17,6 +17,8 @@ import com.yupi.springbootinit.model.vo.UserVO;
 import com.yupi.springbootinit.service.UserService;
 import com.yupi.springbootinit.utils.SqlUtils;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +43,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * 盐值，混淆密码
      */
     public static final String SALT = "yupi";
+
+    /**
+     * 头像url
+     */
+    private static final List<String> AVATARS =
+            Arrays.asList("https://avatars.githubusercontent.com/u/128116610?v=4",
+                    "https://pic.code-nav.cn/user_avatar/1872161376428277761/thumbnail/D5QaPIaHNcft2xW1.jpg",
+                    "https://lh3.googleusercontent.com/ogw/AF2bZyjTMFRntaaqWHEZ9uHmojHvGUITlNHG7iPRhK9kNUcePg=s32-c-mo"
+            );
 
     @Override
     public long userRegister(String userAccount, String userName, String userPassword, String checkPassword) {
@@ -76,6 +87,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             user.setUserAccount(userAccount);
             user.setUserName(userName);
             user.setUserPassword(encryptPassword);
+            Collections.shuffle(AVATARS); // 打乱顺序
+            user.setUserAvatar(AVATARS.get(0)); // 返回第一个
             boolean saveResult = this.save(user);
             if (!saveResult) {
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");

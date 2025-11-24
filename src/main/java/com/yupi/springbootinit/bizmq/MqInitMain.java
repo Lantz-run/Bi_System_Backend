@@ -21,14 +21,18 @@ public class MqInitMain {
     public static void main(String[] args) {
         try {
             ConnectionFactory factory = new ConnectionFactory();
+//            factory.setHost("lantzbi.online");
             factory.setHost("localhost");
+            factory.setUsername("lantz");
+            factory.setPassword("20031002");
+            factory.setPort(5672);
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
 
-            String EXCHANGE_NAME = "code_exchange";
+            String EXCHANGE_NAME = "code_exchange1";
             channel.exchangeDeclare(EXCHANGE_NAME, "direct");
             // 创建队列
-            String queueName1 = "code_queue";
+            String queueName1 = "code_queue1";
             // 声明队列，设置队列为持久化的，非独占的，非自动删除的
             channel.queueDeclare(queueName1, true, false, false, null);
             // 将队列绑定到指定的交换机上

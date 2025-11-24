@@ -8,23 +8,28 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yubi
-    username: root
+    url: jdbc:mysql://lantzbi.online:3306/yubi
+    username: yubi
     password: 20031002
   # Redis 配置
   # todo 需替换配置
   redis:
     database: 1
-    host: localhost
+    host: lantzbi.online
     port: 6379
     timeout: 5000
-    password: 123456
+    password: 20031002
   # Elasticsearch 配置
   # todo 需替换配置
   elasticsearch:
     uris: http://localhost:9200
     username: root
     password: 123456
+  rabbitmq:
+    host: lantzbi.online
+    port: 5672
+    username: lantz
+    password: 20031002
 mybatis-plus:
   configuration:
     # 生产环境关闭日志

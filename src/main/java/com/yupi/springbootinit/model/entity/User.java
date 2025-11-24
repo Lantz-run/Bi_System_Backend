@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
@@ -13,7 +15,10 @@ import lombok.Data;
  */
 @TableName(value ="user")
 @Data
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 3096007121165015634L;
+
     /**
      * id
      * 不要用 auto，用assign_id，因为递增序列对于用户id来说很不安全

@@ -21,6 +21,6 @@ public interface CommonConstant {
     /**
      * 模型 id
      */
-    long BI_MODEL_ID = 8888888L;
+    String DEEPSEEK_MODEL_ID = "ep-20250513002551-fbktw";
 
 }

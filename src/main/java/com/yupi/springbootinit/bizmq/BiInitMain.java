@@ -21,7 +21,11 @@ public class BiInitMain {
     public static void main(String[] args) {
         try {
             ConnectionFactory factory = new ConnectionFactory();
+//            factory.setHost("lantzbi.online");
             factory.setHost("localhost");
+            factory.setUsername("lantz");
+            factory.setPassword("20031002");
+            factory.setPort(5672);
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
 
