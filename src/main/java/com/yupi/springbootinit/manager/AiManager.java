@@ -39,7 +39,7 @@ public class AiManager {
     @Resource
     private SparkClient sparkClient;
 
-    private final String apiKey = "0eb65f2c-dc03-48c8-9bad-77bb92478903";
+    private final String apiKey = "xxxx";
 
 
     /**

@@ -1,5 +1,12 @@
 # 智能BI项目
 
+![1744698520158](https://github.com/user-attachments/assets/8a079dff-f639-47ac-954a-8e3cbac3d916)
+
+![1744698477298](https://github.com/user-attachments/assets/97dbc4e9-a8de-4bf2-b2d1-4027a45ff963)
+
+![1744698458069](https://github.com/user-attachments/assets/b639a11e-ab5a-4408-8b08-1837da51e7b9)
+
+
 ## 项目介绍
 
 BI 商业智能：数据可视化、报表可视化系统
